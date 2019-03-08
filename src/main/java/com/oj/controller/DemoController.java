@@ -31,6 +31,6 @@ public class DemoController {
         user.setUserPassword("123456");
         user.setSex(0);
         int id = userService.save(user);
-        return "用户信息保存成功，id为：" + id;
+        return Integer.valueOf(id).toString();
     }
 }
