@@ -1,5 +1,9 @@
 package com.oj.entity;
-
+/**
+ * @author lixu
+ * @Time 2019年3月9日 15点21分
+ * @Description 对应数据库中User表实体类
+ */
 public class User {
 
     //用户id

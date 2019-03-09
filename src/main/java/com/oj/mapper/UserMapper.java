@@ -4,7 +4,11 @@ import com.oj.entity.User;
 import org.apache.ibatis.annotations.*;
 import java.util.List;
 import java.util.Map;
-
+/**
+ * @author lixu
+ * @Time 2019年3月9日 15点21分
+ * @Description User表数据库操作接口
+ */
 //注册Mapper
 @Mapper
 public interface UserMapper {
