@@ -11,12 +11,15 @@ import java.util.Map;
  * @Description 创建Service接口，统一方法类型和方法名
  */
 public interface UserService {
-    //返回User类型的List
-    public List<User> queryUserList();
-
-    //通过User对象进行数据保存，并返回插入数据库的自增主键
-    public int save(User user);
 
     //返回Map类型的List
-    public List<Map> queryUserMapList();
+    public List<Map> queryUserMapList(User user);
+
+    //删除用户
+    public void deleteUser(User user);
+
+    //添加或修改用户
+    public void demoSaveOrUpdateUser(User user);
+
+
 }

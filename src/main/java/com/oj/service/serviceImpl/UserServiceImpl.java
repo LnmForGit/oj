@@ -23,34 +23,39 @@ public class UserServiceImpl implements UserService {
     private UserMapper mapper;
 
     /**
-     * 返回User类型的List接口方法实现
-     * @author lixu
-     * @return List<User>
-     */
-    @Override
-    public List<User> queryUserList() {
-        return mapper.queryUserList();
-    }
-
-    /**
-     * 通过User对象进行数据保存，并返回插入数据库的自增主键接口方法实现
-     * @author lixu
-     * @param user
-     * @return int
-     */
-    @Override
-    public int save(User user) {
-        mapper.save(user);
-        return user.getId();
-    }
-
-    /**
      * 返回Map类型的List接口方法实现
+     * @param user
      * @author lixu
      * @return List<Map>
      */
     @Override
-    public List<Map> queryUserMapList() {
-        return mapper.queryUserMapList();
+    public List<Map> queryUserMapList(User user) {
+        return mapper.queryUserMapList(user);
+    }
+
+    /**
+     * 删除用户
+     * @param user
+     * @author lixu
+     */
+    @Override
+    public void deleteUser(User user) {
+        mapper.deleteUser(user);
+    }
+
+    /**
+     * 新增或修改用户
+     * @param user
+     * @author lixu
+     */
+    @Override
+    public void demoSaveOrUpdateUser(User user) {
+        //当id为0时，代表未传入用户ID，则可判定为是新增用户可以保存
+        if(0 == user.getId()){
+            user.setUserPassword("123456");
+            mapper.save(user);
+        }else{
+            mapper.update(user);
+        }
     }
 }

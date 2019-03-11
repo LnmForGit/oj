@@ -14,6 +14,10 @@ public class User {
     private String userPassword;
     //用户性别
     private int sex;
+    //用户电话
+    private String userPhone;
+    //用户邮箱
+    private String userMail;
 
     public int getId() {
         return id;
@@ -47,4 +51,19 @@ public class User {
         this.sex = sex;
     }
 
+    public String getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
+    }
+
+    public String getUserMail() {
+        return userMail;
+    }
+
+    public void setUserMail(String userMail) {
+        this.userMail = userMail;
+    }
 }
