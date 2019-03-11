@@ -9,14 +9,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
 /**
- * @author lixu
+ * @author lixu shijian
  * @Time 2019年3月9日 15点21分
  * @Description 创建Service接口实现，进行Mapper接口调用和数据预处理操作
  */
 
 //向框架中注册Service
 @Service
-
 public class UserServiceImpl implements UserService {
     //注入UserMapper
     @Autowired(required = false)
