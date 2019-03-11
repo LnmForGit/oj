@@ -5,6 +5,11 @@ import org.springframework.util.StringUtils;
 
 import java.util.Map;
 
+/**
+ * @author lixu
+ * @Time 2019年3月11日 18点15分
+ * @Description 与User表相关动态sql生成
+ */
 public class UserProvider {
 
     public String getQuerySql(Map<String, Object> params){
