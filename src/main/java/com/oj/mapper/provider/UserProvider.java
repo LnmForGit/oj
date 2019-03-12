@@ -1,6 +1,8 @@
 package com.oj.mapper.provider;
 
 import com.oj.entity.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 
 import java.util.Map;
@@ -11,7 +13,7 @@ import java.util.Map;
  * @Description 与User表相关动态sql生成
  */
 public class UserProvider {
-
+    private Logger log = LoggerFactory.getLogger(this.getClass());
     public String getQuerySql(Map<String, Object> params){
         User user = (User) params.get("condition");
         StringBuffer sql = new StringBuffer();
@@ -33,6 +35,8 @@ public class UserProvider {
             sql.append(" AND a.user_mail like '%"+user.getUserMail()+"%' ");
         }
         sql.append(" ) t1,( SELECT @i := 0 ) t2 ");
+        log.info(sql.toString());
         return sql.toString();
+
     }
 }

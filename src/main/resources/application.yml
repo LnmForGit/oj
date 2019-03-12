@@ -10,8 +10,10 @@ spring:
     encoding: UTF-8
     servlet:
       content-type: text/html
+  mvc:
+#    static-path-pattern: /static/**
   resources:
     static-locations: classpath:/static,classpath:/templates
 
 logging:
-  file: oj.log
+  path: D:/Develop/DevelopWorkingSpace/IdeaProjects/log

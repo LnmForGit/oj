@@ -1,14 +1,15 @@
 package com.oj.controller;
 import com.oj.entity.User;
+import com.oj.frameUtil.LogUtil;
 import com.oj.service.UserService;
-import net.sf.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,11 +27,11 @@ public class DemoController {
     @Autowired
     private UserService userService;
 
+
     //将请求接口对应为"/demo"
     @RequestMapping("/demo")
     //返回demo.html页面
-    public String index(ModelMap modelMap) {
-        modelMap.addAttribute("msg", "hello world");
+    public String index(ModelMap modelMap, HttpServletRequest request) {
         return "demo";
     }
 
@@ -39,7 +40,7 @@ public class DemoController {
     @PostMapping("/demo/SlectMapList")
     @ResponseBody
     //返回Map类型的JsonList
-    public List<Map> demoSlectMapList(@RequestBody User user) {
+    public List<Map> demoSlectMapList(@RequestBody User user, HttpServletRequest request) {
         List<Map> list = userService.queryUserMapList(user);
         return list;
     }
@@ -48,7 +49,7 @@ public class DemoController {
     @PostMapping("/demo/UserDelete")
     @ResponseBody
     //通过ID删除用户
-    public Map<String, String> demoUserDelete(@RequestBody User user) {
+    public Map<String, String> demoUserDelete(@RequestBody User user, HttpServletRequest request) {
         List<Map> list = userService.queryUserMapList(user);
         Map<String, String> map = new HashMap<>();
         map.put("flag","1");
@@ -60,7 +61,7 @@ public class DemoController {
     @PostMapping("/demo/GetUserById")
     @ResponseBody
     //通过ID查找用户
-    public Map demoGetUserById(@RequestBody User user) {
+    public Map demoGetUserById(@RequestBody User user, HttpServletRequest request) {
         return userService.queryUserMapList(user).get(0);
     }
 
@@ -68,7 +69,7 @@ public class DemoController {
     @PostMapping("/demo/SaveOrUpdateUser")
     @ResponseBody
     //添加或更新用户
-    public Map<String, String> demoSaveOrUpdateUser(@RequestBody User user) {
+    public Map<String, String> demoSaveOrUpdateUser(@RequestBody User user, HttpServletRequest request) {
         Map<String, String> map = new HashMap<>();
         map.put("flag","1");
         userService.demoSaveOrUpdateUser(user);

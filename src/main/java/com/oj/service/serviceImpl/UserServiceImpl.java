@@ -5,6 +5,7 @@ import com.oj.mapper.UserMapper;
 import com.oj.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -47,6 +48,8 @@ public class UserServiceImpl implements UserService {
      * @param user
      * @author lixu
      */
+    //Transactional为开启数据库事务标识
+    @Transactional
     @Override
     public void demoSaveOrUpdateUser(User user) {
         //当id为0时，代表未传入用户ID，则可判定为是新增用户可以保存
